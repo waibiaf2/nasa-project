@@ -8,9 +8,9 @@ const {
 const {loadPlanetsData} = require('../../models/planets.model');
 
 describe('Launches API', ()=>{
-	beforeAll(()=>{
-		mongoConnect();
-		loadPlanetsData();
+	beforeAll(async ()=>{
+		await mongoConnect();
+		await loadPlanetsData();
 	});
 	afterAll(()=>{
 		mongoDisconnect();
@@ -73,6 +73,7 @@ describe('Launches API', ()=>{
 			})
 			
 		})
+		
 		test('It should catch invalid dates', async ()=>{
 			const response = await request(app)
 				.post('/v1/launches')
