@@ -5,9 +5,12 @@ const {
 	mongoDisconnect
 } = require('../../services/mongo');
 
+const {loadPlanetsData} = require('../../models/planets.model');
+
 describe('Launches API', ()=>{
 	beforeAll(()=>{
 		mongoConnect();
+		loadPlanetsData();
 	});
 	afterAll(()=>{
 		mongoDisconnect();
